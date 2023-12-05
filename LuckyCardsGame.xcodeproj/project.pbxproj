@@ -17,6 +17,7 @@
 		148836F02B1F7BB1006FA553 /* LuckyCardsGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148836EF2B1F7BB1006FA553 /* LuckyCardsGameTests.swift */; };
 		148836FA2B1F7BB1006FA553 /* LuckyCardsGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148836F92B1F7BB1006FA553 /* LuckyCardsGameUITests.swift */; };
 		148836FC2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148836FB2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift */; };
+		148837092B1F7DCA006FA553 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148837082B1F7DCA006FA553 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		148836F52B1F7BB1006FA553 /* LuckyCardsGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuckyCardsGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		148836F92B1F7BB1006FA553 /* LuckyCardsGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardsGameUITests.swift; sourceTree = "<group>"; };
 		148836FB2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardsGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		148837082B1F7DCA006FA553 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				148836D52B1F7BB0006FA553 /* AppDelegate.swift */,
 				148836D72B1F7BB0006FA553 /* SceneDelegate.swift */,
+				148837082B1F7DCA006FA553 /* GameViewController.swift */,
 				148836D92B1F7BB0006FA553 /* ViewController.swift */,
 				148836DB2B1F7BB0006FA553 /* Main.storyboard */,
 				148836E12B1F7BB1006FA553 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148837092B1F7DCA006FA553 /* GameViewController.swift in Sources */,
 				148836DA2B1F7BB0006FA553 /* ViewController.swift in Sources */,
 				148836D62B1F7BB0006FA553 /* AppDelegate.swift in Sources */,
 				148836E02B1F7BB0006FA553 /* LuckyCardsGame.xcdatamodeld in Sources */,
