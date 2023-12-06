@@ -7,12 +7,39 @@
 
 import UIKit
 
+public class Deck{
+    var value: Int
+    var suit: String
+    
+    init (value: Int, suit: String){
+        self.value = value
+        self.suit = suit
+    }
+}
+
+
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var playerImageView: UIImageView!
+    
+    @IBOutlet weak var computerImageView: UIImageView!
+    
+    var deck: [Deck] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        for i in 1..<14 {
+            deck.append(Deck(value: i+1, suit: "spades"))
+            deck.append(Deck(value: i+1, suit: "hearts"))
+            deck.append(Deck(value: i+1, suit: "diamonds"))
+            deck.append(Deck(value: i+1, suit: "clubs"))
+        }
+        
+        for val in deck{
+            print("\(val.value) " + val.suit)
+        }
+        
     }
     
 

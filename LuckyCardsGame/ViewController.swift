@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func getStarted(_ sender: Any) {
-        performSegue(withIdentifier: "game", sender: <#T##Any?#>)
+        performSegue(withIdentifier: "game", sender: self)
     }
     
 }
