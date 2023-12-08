@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
     var deck: [Card] = []
     var userDeck: [Card] = []
     var computerDeck: [Card] = []
+    var gameOver = UIAlertController(title: "GameOver", message: "You won", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,10 @@ class GameViewController: UIViewController {
         for i in 26..<52{
             computerDeck.append(deck[i])
         }
+        
+        var okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+        
+        gameOver.addAction(okAction)
 
     }
     
@@ -80,6 +85,15 @@ class GameViewController: UIViewController {
             
             
         } else{
+            if userPoints > computerPoints{
+                gameOver.message = "Congratulations, you have won the game"
+            }else if computerPoints > userPoints{
+                gameOver.message = "Unfortunately, you lost the game"
+            }else{
+                gameOver.message = "it's a draw"
+            }
+            
+            present(gameOver, animated: true)
             print("Game Over")
         }
     }
