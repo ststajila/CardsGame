@@ -18,6 +18,8 @@
 		148836FA2B1F7BB1006FA553 /* LuckyCardsGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148836F92B1F7BB1006FA553 /* LuckyCardsGameUITests.swift */; };
 		148836FC2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148836FB2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift */; };
 		148837092B1F7DCA006FA553 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148837082B1F7DCA006FA553 /* GameViewController.swift */; };
+		14B136852B28B23D00331CDD /* PreviousGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B136842B28B23D00331CDD /* PreviousGamesViewController.swift */; };
+		14B136872B28B39500331CDD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B136862B28B39500331CDD /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		148836F92B1F7BB1006FA553 /* LuckyCardsGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardsGameUITests.swift; sourceTree = "<group>"; };
 		148836FB2B1F7BB1006FA553 /* LuckyCardsGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCardsGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		148837082B1F7DCA006FA553 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		14B136842B28B23D00331CDD /* PreviousGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousGamesViewController.swift; sourceTree = "<group>"; };
+		14B136862B28B39500331CDD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 			children = (
 				148836D52B1F7BB0006FA553 /* AppDelegate.swift */,
 				148836D72B1F7BB0006FA553 /* SceneDelegate.swift */,
+				14B136862B28B39500331CDD /* CustomCell.swift */,
+				14B136842B28B23D00331CDD /* PreviousGamesViewController.swift */,
 				148837082B1F7DCA006FA553 /* GameViewController.swift */,
 				148836D92B1F7BB0006FA553 /* ViewController.swift */,
 				148836DB2B1F7BB0006FA553 /* Main.storyboard */,
@@ -269,6 +275,8 @@
 				148836D62B1F7BB0006FA553 /* AppDelegate.swift in Sources */,
 				148836E02B1F7BB0006FA553 /* LuckyCardsGame.xcdatamodeld in Sources */,
 				148836D82B1F7BB0006FA553 /* SceneDelegate.swift in Sources */,
+				14B136872B28B39500331CDD /* CustomCell.swift in Sources */,
+				14B136852B28B23D00331CDD /* PreviousGamesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

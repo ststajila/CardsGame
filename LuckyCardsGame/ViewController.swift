@@ -18,5 +18,8 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "game", sender: self)
     }
     
+    @IBAction func previousGames(_ sender: Any) {
+        performSegue(withIdentifier: "previousGames", sender: self)
+    }
 }
 
