@@ -7,6 +7,12 @@
 
 import UIKit
 
+public class Delegate{
+    static var userPoints: Int = 0
+    static var computerPoints: Int = 0
+    static var tiedPoints: Int = 0
+}
+
 public class Card{
     var value: Int
     var suit: String
@@ -80,6 +86,8 @@ class GameViewController: UIViewController {
                 userPoints += 1
                 computerPoints += 1
                 countLabel.text = "\(userPoints) - \(computerPoints)"
+                
+                Delegate.tiedPoints += 1
             }
             
             
