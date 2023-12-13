@@ -90,7 +90,7 @@
                                         <rect key="frame" x="0.0" y="56" width="393" height="786"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wic-qJ-Ko5" customClass="CustomCell" customModule="LuckyCardsGame" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="wic-qJ-Ko5" customClass="CustomCell" customModule="LuckyCardsGame" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="91.333335876464844"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wic-qJ-Ko5" id="rwW-eg-fWP">
@@ -165,7 +165,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="computerScoredOutlet" destination="a8G-tD-3JQ" id="Q3s-DO-Btb"/>
-                                                    <outlet property="scoreOutlet" destination="2ou-7i-Fqg" id="Pyq-ES-tfx"/>
+                                                    <outlet property="scoreOutlet" destination="Trf-IM-e8L" id="baX-wo-IdN"/>
                                                     <outlet property="tieScoreOutlet" destination="IMZ-KP-BzF" id="LNn-JT-Ebb"/>
                                                     <outlet property="userScoredOutlet" destination="2ou-7i-Fqg" id="fLW-r5-SvM"/>
                                                 </connections>

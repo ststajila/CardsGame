@@ -14,15 +14,24 @@ class PreviousGamesViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableViewOutlet.delegate = self
+        tableViewOutlet.dataSource = self
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return Delegate.gameScores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! CustomCell
+        cell.scoreOutlet.text = Delegate.gameScores[indexPath.row].score
+        cell.userScoredOutlet.text = "\(Delegate.gameScores[indexPath.row].userPoints)"
+        cell.computerScoredOutlet.text = "\(Delegate.gameScores[indexPath.row].computerPoints)"
+        cell.tieScoreOutlet.text = "\(Delegate.gameScores[indexPath.row].tiedPoints)"
+        
+        return cell
     }
     
 

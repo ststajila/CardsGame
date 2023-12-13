@@ -7,13 +7,26 @@
 
 import UIKit
 
-public class Delegate{
-    static var userPoints: Int = 0
-    static var computerPoints: Int = 0
-    static var tiedPoints: Int = 0
+class GameScores{
+    var score: String
+    var userPoints: Int
+    var computerPoints: Int
+    var tiedPoints: Int
+    
+    init(score: String, userPoints: Int, computerPoints: Int, tiedPoints: Int){
+        self.score = score
+        self.userPoints = userPoints
+        self.computerPoints = computerPoints
+        self.tiedPoints = tiedPoints
+    }
 }
 
-public class Card{
+
+class Delegate{
+    static var gameScores: [GameScores] = []
+}
+
+class Card{
     var value: Int
     var suit: String
     
@@ -40,6 +53,10 @@ class GameViewController: UIViewController {
     var userDeck: [Card] = []
     var computerDeck: [Card] = []
     var gameOver = UIAlertController(title: "GameOver", message: "You won", preferredStyle: .alert)
+    
+    var UPoints: Int = 0
+    var CPoints: Int = 0
+    var TPoints: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +89,14 @@ class GameViewController: UIViewController {
                 var temp = computerDeck.remove(at: 0)
                 userDeck.append(temp)
                 userPoints += 1
+                UPoints += 1
                 countLabel.text = "\(userPoints) - \(computerPoints)"
             } else if computerDeck[0].value > userDeck[0].value{
                 computerDeck.append(computerDeck.remove(at: 0))
                 var temp = userDeck.remove(at: 0)
                 computerDeck.append(temp)
                 computerPoints += 1
+                CPoints += 1
                 countLabel.text = "\(userPoints) - \(computerPoints)"
             } else{
                 computerDeck.remove(at: 0)
@@ -85,11 +104,9 @@ class GameViewController: UIViewController {
                 
                 userPoints += 1
                 computerPoints += 1
+                TPoints += 1
                 countLabel.text = "\(userPoints) - \(computerPoints)"
-                
-                Delegate.tiedPoints += 1
             }
-            
             
             
         } else{
@@ -101,6 +118,7 @@ class GameViewController: UIViewController {
                 gameOver.message = "it's a draw"
             }
             
+            Delegate.gameScores.append(GameScores(score: "\(userPoints) - \(computerPoints)", userPoints: UPoints, computerPoints: CPoints, tiedPoints: TPoints))
             present(gameOver, animated: true)
             print("Game Over")
         }
