@@ -24,7 +24,15 @@ class GameScores: Codable{
 
 class Delegate{
     static var gameScores: [GameScores] = []
-    var defaults = UserDefaults.standard
+    static var defaults = UserDefaults.standard
+    static var userPoints = 0
+    static var computerPoints = 0
+    static var deck: [Card] = []
+    static var userDeck: [Card] = []
+    static var computerDeck: [Card] = []
+    static var UPoints: Int = 0
+    static var CPoints: Int = 0
+    static var TPoints: Int = 0
 }
 
 class Card{
@@ -43,62 +51,23 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var countLabel: UILabel!
     
-    var userPoints = 0
-    var computerPoints = 0
-    
     @IBOutlet weak var playerImageView: UIImageView!
     
     @IBOutlet weak var computerImageView: UIImageView!
     
-    var deck: [Card] = []
-    var userDeck: [Card] = []
-    var computerDeck: [Card] = []
     var gameOver = UIAlertController(title: "GameOver", message: "You won", preferredStyle: .alert)
-    
-    var UPoints: Int = 0
-    var CPoints: Int = 0
-    var TPoints: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        newGame()
         
-        countLabel.text = "\(userPoints) - \(computerPoints)"
-        
-        deck = populateTheDeck()
-        deck.shuffle()
-        
-        for i in 0..<26{
-            userDeck.append(deck[i])
-        }
-        for i in 26..<52{
-            computerDeck.append(deck[i])
-        }
+        countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
         
         
         let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: { go in
-            
-            self.deck = []
-            self.userDeck = []
-            self.computerDeck = []
-            
-            self.deck = self.populateTheDeck()
-            self.deck.shuffle()
-            
-            for i in 0..<26{
-                self.userDeck.append(self.deck[i])
-            }
-            for i in 26..<52{
-                self.computerDeck.append(self.deck[i])
-            }
-            
-            self.userPoints = 0
-            self.computerPoints = 0
-            self.UPoints = 0
-            self.CPoints = 0
-            self.TPoints = 0
-            
-            self.countLabel.text = "\(self.userPoints) - \(self.computerPoints)"
+            self.newGame()
+            self.countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
             
             
             self.performSegue(withIdentifier: "detail", sender: self)
@@ -110,45 +79,45 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func play(_ sender: Any) {
-        if userDeck.count != 0 && computerDeck.count != 0{
-            playerImageView.image = UIImage(named: convertNametoImageId(card: userDeck[0]))
-            computerImageView.image = UIImage(named: convertNametoImageId(card: computerDeck[0]))
+        if Delegate.userDeck.count != 0 && Delegate.computerDeck.count != 0{
+            playerImageView.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[0]))
+            computerImageView.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[0]))
             
-            if userDeck[0].value > computerDeck[0].value{
-                userDeck.append(userDeck.remove(at: 0))
-                var temp = computerDeck.remove(at: 0)
-                userDeck.append(temp)
-                userPoints += 1
-                UPoints += 1
-                countLabel.text = "\(userPoints) - \(computerPoints)"
-            } else if computerDeck[0].value > userDeck[0].value{
-                computerDeck.append(computerDeck.remove(at: 0))
-                var temp = userDeck.remove(at: 0)
-                computerDeck.append(temp)
-                computerPoints += 1
-                CPoints += 1
-                countLabel.text = "\(userPoints) - \(computerPoints)"
+            if Delegate.userDeck[0].value > Delegate.computerDeck[0].value{
+                Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
+                var temp = Delegate.computerDeck.remove(at: 0)
+                Delegate.userDeck.append(temp)
+                Delegate.userPoints += 1
+                Delegate.UPoints += 1
+                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+            } else if Delegate.computerDeck[0].value > Delegate.userDeck[0].value{
+                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
+                var temp = Delegate.userDeck.remove(at: 0)
+                Delegate.computerDeck.append(temp)
+                Delegate.computerPoints += 1
+                Delegate.CPoints += 1
+                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
             } else{
-                computerDeck.remove(at: 0)
-                userDeck.remove(at: 0)
+                Delegate.computerDeck.remove(at: 0)
+                Delegate.userDeck.remove(at: 0)
                 
-                userPoints += 1
-                computerPoints += 1
-                TPoints += 1
-                countLabel.text = "\(userPoints) - \(computerPoints)"
+                Delegate.userPoints += 1
+                Delegate.computerPoints += 1
+                Delegate.TPoints += 1
+                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
             }
             
             
         } else{
-            if userPoints > computerPoints{
+            if Delegate.userPoints > Delegate.computerPoints{
                 gameOver.message = "Congratulations, you have won the game"
-            }else if computerPoints > userPoints{
+            }else if Delegate.computerPoints > Delegate.userPoints{
                 gameOver.message = "Unfortunately, you lost the game"
             }else{
                 gameOver.message = "it's a draw"
             }
             
-            Delegate.gameScores.append(GameScores(score: "\(userPoints) - \(computerPoints)", userPoints: UPoints, computerPoints: CPoints, tiedPoints: TPoints))
+            Delegate.gameScores.append(GameScores(score: "\(Delegate.userPoints) - \(Delegate.computerPoints)", userPoints: Delegate.UPoints, computerPoints: Delegate.CPoints, tiedPoints: Delegate.TPoints))
             
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(Delegate.gameScores) {
@@ -188,5 +157,23 @@ class GameViewController: UIViewController {
                 }
             }
         }
+    
+    func newGame() -> Bool{
+        Delegate.deck = populateTheDeck()
+        Delegate.deck.shuffle()
+        
+        for i in 0..<26{
+            Delegate.userDeck.append(Delegate.deck[i])
+        }
+        for i in 26..<52{
+            Delegate.computerDeck.append(Delegate.deck[i])
+        }
+        Delegate.userPoints = 0
+        Delegate.computerPoints = 0
+        Delegate.UPoints = 0
+        Delegate.CPoints = 0
+        Delegate.TPoints = 0
+        return true
+    }
         
     }
