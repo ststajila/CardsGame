@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfg-Bw-DJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051.145038167939" y="674.64788732394368"/>
+            <point key="canvasLocation" x="1482" y="745"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="gQh-fQ-vSU">
@@ -284,6 +284,7 @@
                         <outlet property="computerImageView" destination="SzP-3c-Jyg" id="FuO-Yw-oXq"/>
                         <outlet property="countLabel" destination="4wU-E3-0Jt" id="T7k-lV-dTp"/>
                         <outlet property="playerImageView" destination="ind-vs-VSu" id="BqL-wA-H8E"/>
+                        <segue destination="iPP-xn-dgL" kind="showDetail" identifier="detail" id="UjC-7W-0Uc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NI-dp-7cw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -309,6 +310,9 @@
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="UjC-7W-0Uc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="3742" height="5613"/>
         <image name="background 1" width="630" height="1279"/>

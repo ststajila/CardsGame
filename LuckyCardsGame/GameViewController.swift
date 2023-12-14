@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameScores{
+class GameScores: Codable{
     var score: String
     var userPoints: Int
     var computerPoints: Int
@@ -24,6 +24,7 @@ class GameScores{
 
 class Delegate{
     static var gameScores: [GameScores] = []
+    var defaults = UserDefaults.standard
 }
 
 class Card{
@@ -61,6 +62,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let items = UserDefaults.standard.data(forKey: "Scores") {
+                        let decoder = JSONDecoder()
+                        if let decoded = try? decoder.decode([GameScores].self, from: items) {
+                            Delegate.gameScores = decoded
+                        }
+                }
+        
         countLabel.text = "\(userPoints) - \(computerPoints)"
         
         deck = populateTheDeck()
@@ -73,10 +81,38 @@ class GameViewController: UIViewController {
             computerDeck.append(deck[i])
         }
         
-        var okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
         
-        gameOver.addAction(okAction)
-
+        let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: { go in
+            
+            self.deck = []
+            self.userDeck = []
+            self.computerDeck = []
+            
+            self.deck = self.populateTheDeck()
+            self.deck.shuffle()
+            
+            for i in 0..<26{
+                self.userDeck.append(self.deck[i])
+            }
+            for i in 26..<52{
+                self.computerDeck.append(self.deck[i])
+            }
+            
+            self.userPoints = 0
+            self.computerPoints = 0
+            self.UPoints = 0
+            self.CPoints = 0
+            self.TPoints = 0
+            
+            self.countLabel.text = "\(self.userPoints) - \(self.computerPoints)"
+            
+            
+            self.performSegue(withIdentifier: "detail", sender: self)
+            })
+           
+            gameOver.addAction(okAction)
+        
+        
     }
     
     @IBAction func play(_ sender: Any) {
@@ -119,6 +155,12 @@ class GameViewController: UIViewController {
             }
             
             Delegate.gameScores.append(GameScores(score: "\(userPoints) - \(computerPoints)", userPoints: UPoints, computerPoints: CPoints, tiedPoints: TPoints))
+            
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(Delegate.gameScores) {
+                               UserDefaults.standard.set(encoded, forKey: "Scores")
+                           }
+            
             present(gameOver, animated: true)
             print("Game Over")
         }
