@@ -11,7 +11,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if let items = UserDefaults.standard.data(forKey: "Scores") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([GameScores].self, from: items) {
+                Delegate.gameScores = decoded
+            }
+        }
     }
 
     @IBAction func getStarted(_ sender: Any) {
