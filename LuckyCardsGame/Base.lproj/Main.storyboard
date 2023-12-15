@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ihv-j4-Hg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ihv-j4-Hg9">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -354,61 +353,78 @@
                                             </navigationItem>
                                         </items>
                                     </navigationBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NDw-P3-Xpl">
+                                        <rect key="frame" x="0.0" y="57.666666666666657" width="393" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G02-eI-67k">
+                                                <rect key="frame" x="0.0" y="0.0" width="190.66666666666666" height="41"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2he-af-o1Y">
+                                                <rect key="frame" x="202.66666666666663" y="0.0" width="190.33333333333337" height="41"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="e6z-QW-5WL">
-                                        <rect key="frame" x="0.0" y="57.666666666666686" width="393" height="764.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="98.666666666666686" width="393" height="723.33333333333326"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7af-dY-QxG">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="150.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="142.33333333333334"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TdU-nh-vsT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="150.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="142.33333333333334"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TE-0r-3yU">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="150.33333333333334"/>
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="142.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OOR-n6-sPb">
-                                                <rect key="frame" x="0.0" y="153.33333333333337" width="393" height="150.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="145.33333333333331" width="393" height="142.33333333333331"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFL-VJ-tZR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="150.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="142.33333333333334"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gH7-79-6l2">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="150.66666666666666"/>
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="142.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gHD-sL-UOG">
-                                                <rect key="frame" x="0.0" y="307" width="393" height="150.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="290.66666666666663" width="393" height="142"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="68b-sQ-7ya">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="150.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="142"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-yw-bXB">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="150.33333333333334"/>
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="142"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N4w-It-mRS">
-                                                <rect key="frame" x="0.0" y="460.33333333333331" width="393" height="150.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="435.66666666666669" width="393" height="142.33333333333331"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cm2-sC-nx3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="150.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="142.33333333333334"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-RT-IDQ">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="150.66666666666666"/>
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="142.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oZN-bA-V8e">
-                                                <rect key="frame" x="0.0" y="614" width="393" height="150.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="581" width="393" height="142.33333333333337"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhN-pW-fEa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="150.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="142.33333333333334"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YBv-hT-kTF">
-                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="150.33333333333334"/>
+                                                        <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="142.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -416,7 +432,8 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="e6z-QW-5WL" firstAttribute="height" secondItem="8zh-3a-C7W" secondAttribute="height" multiplier="0.93" id="Vfq-Bf-A20"/>
+                                    <constraint firstItem="NDw-P3-Xpl" firstAttribute="height" secondItem="8zh-3a-C7W" secondAttribute="height" multiplier="0.05" id="8YF-Ec-9aa"/>
+                                    <constraint firstItem="e6z-QW-5WL" firstAttribute="height" secondItem="8zh-3a-C7W" secondAttribute="height" multiplier="0.88" id="Vfq-Bf-A20"/>
                                 </constraints>
                             </stackView>
                         </subviews>
