@@ -45,9 +45,14 @@ class Card{
     }
 }
 
+protocol ViewControllerDelegate{
+    func updateScoreLabel()
+    func updateUAmountLabel()
+    func updateCAmountLabel()
+}
 
-class GameViewController: UIViewController {
-    
+
+class GameViewController: UIViewController, ViewControllerDelegate {
     
     @IBOutlet weak var countLabel: UILabel!
     
@@ -60,6 +65,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var CAmountOutlet: UILabel!
     
     var gameOver = UIAlertController(title: "GameOver", message: "You won", preferredStyle: .alert)
+    
+    var tieCase1 = UIAlertController(title: "Its a Tie", message: "You will be send to another screen to play a tie game", preferredStyle: .alert)
+    var tieCase2 = UIAlertController(title: "Its a Tie", message: "You/Computer have less than 5 cards in the deck, both cards get dismissed from both decks!", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +89,15 @@ class GameViewController: UIViewController {
             self.performSegue(withIdentifier: "detail", sender: self)
             })
            
-            gameOver.addAction(okAction)
+        let tie1Action = UIAlertAction(title: "Ok", style: .default, handler: { segue in
+            self.performSegue(withIdentifier: "tie", sender: self)
+        })
+        
+        let tie2Action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            
+        gameOver.addAction(okAction)
+        tieCase1.addAction(tie1Action)
+        tieCase2.addAction(tie2Action)
         
         
     }
@@ -110,18 +126,24 @@ class GameViewController: UIViewController {
                 UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
                 CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
             } else{
-
-                performSegue(withIdentifier: "tie", sender: self)
                 
-//                Delegate.computerDeck.remove(at: 0)
-//                Delegate.userDeck.remove(at: 0)
-//                
-//                Delegate.userPoints += 1
-//                Delegate.computerPoints += 1
-//                Delegate.TPoints += 1
-//                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
-//                UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
-//                CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
+                if Delegate.userDeck.count >= 5 && Delegate.computerDeck.count >= 5{
+                    
+                    present(tieCase1, animated: true)
+                    
+                } else{
+                    present(tieCase2, animated: true)
+                    Delegate.computerDeck.remove(at: 0)
+                    Delegate.userDeck.remove(at: 0)
+                                    
+                    Delegate.userPoints += 1
+                    Delegate.computerPoints += 1
+                    Delegate.TPoints += 1
+                    
+                    countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+                    UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+                    CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
+                }
             }
             
             
@@ -177,6 +199,26 @@ class GameViewController: UIViewController {
                 }
             }
         }
+    
+    func updateScoreLabel() {
+        self.countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+        
+    }
+    
+    func updateUAmountLabel() {
+        self.UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+    }
+    
+    func updateCAmountLabel() {
+        self.CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tie"{
+            let nvc = segue.destination as! TieViewController
+            nvc.delegate = self
+        }
+    }
     
     func newGame() -> Bool{
         Delegate.deck = []

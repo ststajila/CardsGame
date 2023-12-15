@@ -9,6 +9,7 @@ import UIKit
 
 class TieViewController: UIViewController {
 
+    var delegate: ViewControllerDelegate!
     @IBOutlet weak var U1: UIImageView!
     @IBOutlet weak var U2: UIImageView!
     @IBOutlet weak var U3: UIImageView!
@@ -23,8 +24,6 @@ class TieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if Delegate.userDeck.count >= 5 && Delegate.computerDeck.count >= 5{
             
             U1.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[0]))
             C1.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[0]))
@@ -71,19 +70,15 @@ class TieViewController: UIViewController {
                 Delegate.computerPoints += 1
                 Delegate.TPoints += 1
                 
-                print ("\(Delegate.userDeck.count)  \(Delegate.computerDeck.count)")
             }
+        
+        
+        delegate.updateScoreLabel()
+        delegate.updateUAmountLabel()
+        delegate.updateCAmountLabel()
             
-            } else{
-            Delegate.computerDeck.remove(at: 0)
-            Delegate.userDeck.remove(at: 0)
-            Delegate.userPoints += 1
-            Delegate.computerPoints += 1
-            Delegate.TPoints += 1
-            self.dismiss(animated: true)
         }
         
-    }
     
     
     
