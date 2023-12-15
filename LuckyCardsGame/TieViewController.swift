@@ -22,25 +22,64 @@ class TieViewController: UIViewController {
     @IBOutlet weak var C4: UIImageView!
     @IBOutlet weak var C5: UIImageView!
     
+    var UImage2: UIImage?
+    var CImage2: UIImage?
+    var UImage3: UIImage?
+    var CImage3: UIImage?
+    var UImage4: UIImage?
+    var CImage4: UIImage?
+    var tieCase = UIAlertController(title: "Its a Tie", message: "Both cards get dismissed from both decks!", preferredStyle: .alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        var okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        tieCase.addAction(okAction)
+        
             U1.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[0]))
             C1.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[0]))
             U5.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[4]))
             C5.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[4]))
+        
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[1])){
+            UImage2 = image
+        }
+        
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[1])){
+            CImage2 = image
+        }
+        
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[2])){
+            UImage3 = image
+        }
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[2])){
+            CImage3 = image
+        }
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[3])){
+            UImage4 = image
+        }
+        
+        if let image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[3])){
+            CImage4 = image
+        }
+       
             
             if Delegate.userDeck[4].value > Delegate.computerDeck[4].value{
                 Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
-                Delegate.userDeck.append(Delegate.userDeck.remove(at: 1))
-                Delegate.userDeck.append(Delegate.userDeck.remove(at: 2))
-                Delegate.userDeck.append(Delegate.userDeck.remove(at: 3))
-                Delegate.userDeck.append(Delegate.userDeck.remove(at: 4))
+                Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.userDeck.remove(at: 0))
                 Delegate.userDeck.append(Delegate.computerDeck.remove(at: 0))
-                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 1))
-                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 2))
-                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 3))
-                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 4))
+                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.userDeck.append(Delegate.computerDeck.remove(at: 0))
                 Delegate.userPoints += 1
                 Delegate.TPoints += 1
                 
@@ -49,26 +88,29 @@ class TieViewController: UIViewController {
                 
             } else if Delegate.computerDeck[4].value > Delegate.userDeck[4].value{
                 Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
-                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 1))
-                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 2))
-                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 3))
-                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 4))
+                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
                 Delegate.computerDeck.append(Delegate.userDeck.remove(at: 0))
-                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 1))
-                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 2))
-                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 3))
-                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 4))
+                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 0))
+                Delegate.computerDeck.append(Delegate.userDeck.remove(at: 0))
                 Delegate.computerPoints += 1
                 Delegate.TPoints += 1
                 
                 print ("\(Delegate.userDeck.count)  \(Delegate.computerDeck.count)")
                 
             } else{
+                
                 Delegate.computerDeck.remove(at: 0)
                 Delegate.userDeck.remove(at: 0)
                 Delegate.userPoints += 1
                 Delegate.computerPoints += 1
                 Delegate.TPoints += 1
+                
+                present(tieCase, animated: true)
                 
             }
         
@@ -83,12 +125,12 @@ class TieViewController: UIViewController {
     
     
     @IBAction func showCards(_ sender: Any) {
-        U2.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[1]))
-        C2.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[1]))
-        U3.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[2]))
-        C3.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[2]))
-        U4.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[3]))
-        C4.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[3]))
+        U2.image = UImage2
+        C2.image = CImage2
+        U3.image = UImage3
+        C3.image = CImage3
+        U4.image = UImage4
+        C4.image = CImage4
     }
     
     @IBAction func done(_ sender: Any) {
