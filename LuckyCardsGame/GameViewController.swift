@@ -55,6 +55,10 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var computerImageView: UIImageView!
     
+    @IBOutlet weak var UAmountOutlet: UILabel!
+    
+    @IBOutlet weak var CAmountOutlet: UILabel!
+    
     var gameOver = UIAlertController(title: "GameOver", message: "You won", preferredStyle: .alert)
     
     override func viewDidLoad() {
@@ -63,11 +67,15 @@ class GameViewController: UIViewController {
         newGame()
         
         countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+        UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+        CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
         
         
         let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: { go in
             self.newGame()
             self.countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+            self.UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+            self.CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
             
             
             self.performSegue(withIdentifier: "detail", sender: self)
@@ -90,6 +98,8 @@ class GameViewController: UIViewController {
                 Delegate.userPoints += 1
                 Delegate.UPoints += 1
                 countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+                UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+                CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
             } else if Delegate.computerDeck[0].value > Delegate.userDeck[0].value{
                 Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
                 var temp = Delegate.userDeck.remove(at: 0)
@@ -97,14 +107,21 @@ class GameViewController: UIViewController {
                 Delegate.computerPoints += 1
                 Delegate.CPoints += 1
                 countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+                UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+                CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
             } else{
-                Delegate.computerDeck.remove(at: 0)
-                Delegate.userDeck.remove(at: 0)
+
+                performSegue(withIdentifier: "tie", sender: self)
                 
-                Delegate.userPoints += 1
-                Delegate.computerPoints += 1
-                Delegate.TPoints += 1
-                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+//                Delegate.computerDeck.remove(at: 0)
+//                Delegate.userDeck.remove(at: 0)
+//                
+//                Delegate.userPoints += 1
+//                Delegate.computerPoints += 1
+//                Delegate.TPoints += 1
+//                countLabel.text = "\(Delegate.userPoints) - \(Delegate.computerPoints)"
+//                UAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.userDeck.count)"
+//                CAmountOutlet.text = "Amount of Cards in the Deck: \(Delegate.computerDeck.count)"
             }
             
             
@@ -146,19 +163,26 @@ class GameViewController: UIViewController {
             if card.value < 11{
                 return "\(card.value)_of_\(card.suit).png"
             }else{
-                if card.value == 11{
+                switch card.value {
+                case 11:
                     return "jack_of_\(card.suit)2.png"
-                } else if card.value == 12{
+                case 12:
                     return "queen_of_\(card.suit)2.png"
-                } else if card.value == 13{
+                case 13:
                     return "king_of_\(card.suit)2.png"
-                } else{
+                case 14:
                     return "ace_of_\(card.suit).png"
+                default:
+                    return "black_joker"
                 }
             }
         }
     
     func newGame() -> Bool{
+        Delegate.deck = []
+        Delegate.userDeck = []
+        Delegate.computerDeck = []
+        
         Delegate.deck = populateTheDeck()
         Delegate.deck.shuffle()
         

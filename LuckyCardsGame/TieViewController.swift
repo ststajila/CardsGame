@@ -44,7 +44,11 @@ class TieViewController: UIViewController {
                 Delegate.userDeck.append(Delegate.computerDeck.remove(at: 4))
                 Delegate.userPoints += 1
                 Delegate.TPoints += 1
-            } else if Delegate.userDeck[4].value < Delegate.computerDeck[4].value{
+                
+                print ("\(Delegate.userDeck.count)  \(Delegate.computerDeck.count)")
+                print ("at the end \(Delegate.userDeck[Delegate.userDeck.count-1].value) one before \(Delegate.userDeck[Delegate.userDeck.count-2].value)")
+                
+            } else if Delegate.computerDeck[4].value > Delegate.userDeck[4].value{
                 Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 0))
                 Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 1))
                 Delegate.computerDeck.append(Delegate.computerDeck.remove(at: 2))
@@ -57,12 +61,17 @@ class TieViewController: UIViewController {
                 Delegate.computerDeck.append(Delegate.userDeck.remove(at: 4))
                 Delegate.computerPoints += 1
                 Delegate.TPoints += 1
+                
+                print ("\(Delegate.userDeck.count)  \(Delegate.computerDeck.count)")
+                
             } else{
                 Delegate.computerDeck.remove(at: 0)
                 Delegate.userDeck.remove(at: 0)
                 Delegate.userPoints += 1
                 Delegate.computerPoints += 1
                 Delegate.TPoints += 1
+                
+                print ("\(Delegate.userDeck.count)  \(Delegate.computerDeck.count)")
             }
             
             } else{
@@ -85,6 +94,10 @@ class TieViewController: UIViewController {
         C3.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[2]))
         U4.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[3]))
         C4.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[3]))
+    }
+    
+    @IBAction func done(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     
