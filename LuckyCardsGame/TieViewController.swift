@@ -36,6 +36,7 @@ class TieViewController: UIViewController {
         var okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         tieCase.addAction(okAction)
         
+        
             U1.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[0]))
             C1.image = UIImage(named: convertNametoImageId(card: Delegate.computerDeck[0]))
             U5.image = UIImage(named: convertNametoImageId(card: Delegate.userDeck[4]))

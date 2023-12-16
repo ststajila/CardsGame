@@ -34,6 +34,23 @@ class PreviousGamesViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        
+        if editingStyle == .delete{
+            
+            Delegate.gameScores.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(Delegate.gameScores) {
+                               UserDefaults.standard.set(encoded, forKey: "Scores")
+                           }
+            
+            tableView.reloadData()
+        }
+    }
+    
 
     
     @IBAction func done(_ sender: Any) {
